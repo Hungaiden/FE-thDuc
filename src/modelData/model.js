@@ -1,6 +1,6 @@
 export const userListModel = async () => {
   try {
-    const response = await fetch("https://y2y8tg-8080.csb.app/users/list");
+    const response = await fetch("http://localhost:8080/api/users/list");
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
@@ -16,7 +16,7 @@ export const userListModel = async () => {
 
 export const userModel = async (userId) => {
   try {
-    const response = await fetch(`https://y2y8tg-8080.csb.app/users/${userId}`);
+    const response = await fetch(`http://localhost:8080/api/users/${userId}`);
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
@@ -31,7 +31,7 @@ export const userModel = async (userId) => {
 export const photoOfUserModel = async (userId) => {
   try {
     const response = await fetch(
-      `https://y2y8tg-8080.csb.app/photos/${userId}`
+      `http://localhost:8080/api/photos/${userId}`
     );
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);

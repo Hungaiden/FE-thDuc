@@ -1,50 +1,78 @@
 import "./App.css";
 
 import React from "react";
-import { Grid, Paper } from "@mui/material";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-import TopBar from "./components/TopBar";
-import UserDetail from "./components/UserDetail";
-import UserList from "./components/UserList";
-import UserPhotos from "./components/UserPhotos";
-
+import TopBar from "./components/TopBar/TopBar";
+import UserDetail from "./components/UserDetail/UserDetail";
+import UserList from "./components/UserList/UserList";
+import UserPhotos from "./components/UserPhotos/UserPhotos";
+import { AuthProvider, useAuth } from "./contexts/AuthContext";
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
+import Login from "./components/Login/Login";
+import Register from "./components/Register/Register";
+import UploadPhoto from './components/UploadPhoto/UploadPhoto';
 function Home() {
   return (
-    <div style={{ width: "350px" }}>
+    <div className="home-container">
       <h1>Home Page</h1>
     </div>
   );
 }
 
-const App = (props) => {
+function App() {
   return (
-    <Router>
-      <div>
-        <Grid container spacing={2}>
-          <Grid item xs={12}>
-            <TopBar />
-          </Grid>
-          <div className="main-topbar-buffer" />
-          {/* <Grid item sm={3}>
-              <Paper className="main-grid-item">
-                <UserList />
-              </Paper>
-            </Grid> */}
-          <Grid item sm={9}>
-            <Paper className="main-grid-item">
+    <AuthProvider>
+      <Router>
+        <div className="app-wrapper">
+          <TopBar />
+          <div className="main-layout">
+            <UserList />
+            <main className="main-content">
               <Routes>
-                <Route path="/users/:userId" element={<UserDetail />} />
-                <Route path="/photos/:userId" element={<UserPhotos />} />
-                <Route path="/users" element={<UserList />} />
-                <Route path="/" element={<Home />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
+                <Route
+                  path="/users/:userId"
+                  element={
+                    <ProtectedRoute>
+                      <UserDetail />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/photos/:userId"
+                  element={
+                    <ProtectedRoute>
+                      <UserPhotos />
+                    </ProtectedRoute>
+                  }
+                />
+
+                <Route
+                  path="/"
+                  element={
+                    <ProtectedRoute>
+                      <Home />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/upload"
+                  element={
+                    <ProtectedRoute>
+                      <UploadPhoto />
+                    </ProtectedRoute>
+                  }
+                />
               </Routes>
-            </Paper>
-          </Grid>
-        </Grid>
-      </div>
-    </Router>
+            </main>
+          </div>
+        </div>
+      </Router>
+    </AuthProvider>
   );
-};
+}
+
 
 export default App;

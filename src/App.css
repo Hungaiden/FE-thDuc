@@ -1,8 +1,54 @@
-.main-topbar-buffer {
-  margin-top: 70px;
+/* Wrapper toàn bộ app */
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
 
-.main-grid-item {
-  height: calc(100vh - 85px);
+/* TopBar nằm trên cùng */
+.top-bar {
+  height: 60px;
+  background-color: #f8f8f8;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+/* Layout chính: chia 2 phần trái phải */
+.main-layout {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+/* Sidebar UserList */
+.user-list {
+  width: 250px;
+  background-color: #fafafa;
+  border-right: 1px solid #ddd;
   padding: 10px;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+/* Phần nội dung chính */
+.main-content {
+  flex: 1;
+  padding: 30px;
+  overflow-y: auto;
+  display: flex;
+  justify-content: center; /* Căn giữa theo chiều ngang */
+  align-items: start;       /* Hoặc center nếu bạn muốn giữa màn hình */
+}
+
+/* Form Login/Register */
+.login-form-container {
+  width: 400px;
+  padding: 30px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }

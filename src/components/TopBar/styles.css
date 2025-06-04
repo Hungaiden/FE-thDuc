@@ -1,4 +1,55 @@
-.topbar-appBar {
-  height: 60;
-  justify-content: "center";
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0 20px;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: auto; /* Đẩy nav-right sát về bên phải */
+}
+
+.nav-link.logo {
+  font-size: 18px;
+  font-weight: bold;
+  margin-right: auto; /* Đẩy logo sát về bên trái */
+}
+
+.welcome-text {
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+.login-link {
+  color: #4CAF50; /* Màu xanh lá nhẹ */
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 5px 10px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+.upload-button {
+  padding: 8px 16px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 15px;
+  font-weight: 500;
+  transition: background-color 0.3s;
+}
+
+.upload-button:hover {
+  background-color: #45a049;
 }
